@@ -1,0 +1,8 @@
+development:
+  adapter: mysql2
+  host: localhost
+  database: appstore_dev
+  username: root
+  password: root
+
+

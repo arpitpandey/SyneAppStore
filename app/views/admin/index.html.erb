@@ -1,0 +1,29 @@
+<br/><br/>
+<center>
+
+<table class="list_table" style="border-style:solid;border-width:0px;">
+	<tr>
+		<th class="list_th">Type</th>
+		<th class="list_th">Name</th>
+		<th class="list_th">Price</th>
+		<th class="list_th">Description</th>
+		<th class="list_th">IsActive</th>
+		<th class="list_th">Operation</th>
+	</tr>
+	<%for prod in @product%>
+	<tr>
+		<td class="list_td"><%= prod.ptype %></td>
+		<td class="list_td"><%= prod.name %></td>
+		<td class="list_td"><%= prod.price %></td>
+		<td class="list_td"><%= prod.description %></td>
+		<td class="list_td"><% if prod.isactive? %>
+					true
+				<%else%>
+					false
+				<%end%>
+		</td>
+		<td class="list_td"><b><%= link_to 'Active', active_path(:id =>prod.id) %>|<%= link_to 'DeActive',deactive_path(:id =>prod.id) %>|<%= link_to 'Delete', delete_path(:id =>prod.id) %></b></td>
+	</tr>
+	<%end%>
+</table>
+</center>

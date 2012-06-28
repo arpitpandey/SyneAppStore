@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SyneAppStore</title>
+  <%= stylesheet_link_tag "application", :media => "screen" %>
+  <%= javascript_include_tag  "application" %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tags %>
+ <script type="text/javascript">
+$(document).ready(function(){
+$('[name=anchor]').hover(function(){
+var s=$(this).attr('rel');
+switch(s)
+{
+case '1':
+$('.oferta_content img').attr("src","../img/new/android-market-logo.png");
+$('.oferta_title').text("SYNE ANDROID SDK FOR DEVELOPMENT");
+$('.oferta_text').text("Its a boundless supply of entertaintment, security, development.");
+break;
+case '2':
+$('.oferta_content img').attr("src","../img/new/windows.png");
+$('.oferta_title').text(" SYNE WINDOWS PHONE APPLICATIONS ");
+$('.oferta_text').text("Windows has now reached within your palm.Go for it.");
+break;
+case '3':
+$('.oferta_content img').attr("src","../img/new/blackberry.png");
+$('.oferta_title').text("SYNE BLACKBERRY ACCESSORIES");
+$('.oferta_text').text("easy, seamless, flexible applications for blackberry operating system.");
+break;
+case '4':
+$('.oferta_content img').attr("src","../img/new/ios-icon.png");
+$('.oferta_title').text("SYNE iOS APPLICATIONS");
+$('.oferta_text').text("Apple has introduced the iOS for its application with Cloud storage facility.");
+break;
+case '5':
+$('.oferta_content img').attr("src","../img/new/bi_logo.png");
+$('.oferta_title').text("SYNE BADA OS APPLICATIONS");
+$('.oferta_text').text("BADA OS games, accessories, applications for you.");
+break;
+}
+});
+
+});
+</script> 
+
+</head>
+<body>
+<div id="main_container">
+		
+	  <div id="header">	  
+			<div id="logo">
+				<a href="#"><img src="../images/DSM_SimplifiedLogo_FullColor copy.png" alt="" border="0" width="237" height="120" /></a>
+			</div>
+				<div class="oferte_content">
+					  <div class="oferta">
+							<div class="oferta_content"> 
+								<img src="../img/new/android-market-logo.png" width="94" height="92" alt="" border="0" class="oferta_img" />
+								  <div class="oferta_details">
+									<div class="oferta_title"> Syne Apps Store</div>
+									<div class="oferta_text">Applications made with complete power for exploitation..</div>
+								  </div>
+							</div>
+							<div class="oferta_pagination">
+								<a name="anchor" href="#" rel="1">1</a>
+								<a name="anchor" href="#" rel="2">2</a>
+								<a name="anchor" href="#" rel="3">3</a>
+								<a name="anchor" href="#" rel="4">4</a>
+								<a name="anchor" href="#" rel="5">5</a>
+							</div>
+					  </div>
+					  <div class="top_divider">
+							<img src="../images/header_divider.png" alt="" width="1" height="164" />
+					  </div>
+			    </div>
+	  </div>
+   <div id="main_content">
+			<div id="menu_tab">
+				<div class="left_menu_corner"></div>
+						<ul class="menu">
+							<li><%= link_to "Home",home_path,{ :class =>"nav1"}%></li>
+							<%- if user_signed_in? -%>
+								<%- if current_user.has_role? :admin -%>
+								  <li class="divider"></li>
+								  <li><b><%= link_to "Add Products",addproduct_path,{ :class =>"nav2"}%></b></li>
+								  <li class="divider"></li>
+								  <li><%= link_to "Product Status",productindex_path,{ :class =>"nav2"}%></li>
+								  <li class="divider"></li>
+								  <li><%= link_to 'Logout', logout_path,{ :class =>"nav4"}, :method => :delete %></li>
+								<%else%>
+									<li class="divider"></li>
+									<li><%= link_to "Products",index_path,{ :class =>"nav2"}%></li>
+									<li class="divider"></li>
+									<li><%= link_to 'Logout', logout_path,{ :class =>"nav4"}, :method => :delete %></li>
+								<%end%>
+							<%- else -%>
+								  <li class="divider"></li>
+							      <li><%= link_to "Products",index_path,{ :class =>"nav2"}%></li>
+								  <li class="divider"></li>
+								  <li><%= link_to 'Sign in', new_user_session_path,{ :class =>"nav4"} %></li>
+							<%- end -%>
+						</ul>
+				<div class="right_menu_corner"></div>
+			</div>
+	</div>
+
+<%= yield %>
+
+<br/><br/><br/>
+
+</div>
+</body>
+</html>

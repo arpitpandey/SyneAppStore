@@ -1,0 +1,17 @@
+<br/>
+<center>
+	<h1>Please Confirm Shiping Address</h1>
+		<table cellspacing=5px>
+		  <tr><td>Name</td><td><b><%= @address['name'] %></b></td></tr>
+		  <tr><td>Company</td><td><b><%= @address['company'] %></b></td></tr>
+		  <tr><td>Address 1</td><td><b><%= @address['address1'] %></b></td></tr>
+		  <tr><td>Address 2</td><td><b><%= @address['address2'] %></b></td></tr>
+		  <tr><td>City</td><td><b><%= @address['city'] %></td></b></tr>
+		  <tr><td>State</td><td><b><%= @address['state'] %></td></b></tr>
+		  <tr><td>Country Code</td><td><b><%= @address['country'] %></b></td></tr>
+		  <tr><td>Zip</td><td><b><%= @address['zip'] %></b></td></tr>
+		</table>
+		<%= form_tag complete_path(:token => params[:token], :payer_id => params[:PayerID]) do %>
+		  <%= submit_tag 'Complete Payment' %>
+		<% end %>
+</center>
